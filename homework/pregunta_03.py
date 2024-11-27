@@ -6,11 +6,15 @@ librerias de pandas para resolver las preguntas.
 """
 
 
+import pandas as pd
+x = pd.read_csv("files/input/tbl0.tsv", sep="\t") 
 def pregunta_03():
+    return(x.groupby('c1').size().sort_index())
+if __name__ == "__main__":
+    print(pregunta_03())
     """
     ¿Cuál es la cantidad de registros por cada letra de la columna `c1` del
     archivo `tbl0.tsv`?
-
     Rta/
     c1
     A     8

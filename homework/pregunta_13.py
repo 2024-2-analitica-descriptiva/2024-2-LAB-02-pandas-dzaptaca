@@ -6,7 +6,14 @@ librerias de pandas para resolver las preguntas.
 """
 
 
+import pandas as pd
+x = pd.read_csv("files/input/tbl0.tsv", sep="\t") 
+y = pd.read_csv("files/input/tbl2.tsv", sep="\t") 
 def pregunta_13():
+    union = pd.merge(x, y, on='c0', how='inner')
+    return(union.groupby('c1')['c5b'].sum())
+if __name__ == "__main__":
+    print(pregunta_13())
     """
     Si la columna `c0` es la clave en los archivos `tbl0.tsv` y `tbl2.tsv`,
     compute la suma de `tbl2.c5b` por cada valor en `tbl0.c1`.

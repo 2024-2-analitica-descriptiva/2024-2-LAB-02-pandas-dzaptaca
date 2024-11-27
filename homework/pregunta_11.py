@@ -6,7 +6,13 @@ librerias de pandas para resolver las preguntas.
 """
 
 
+import pandas as pd
+x = pd.read_csv("files/input/tbl1.tsv", sep="\t") 
 def pregunta_11():
+    x['c4'] = x['c4'].astype(str)
+    return(x.groupby('c0')['c4'].apply(lambda y: ','.join(map(str, sorted(y)))).reset_index())
+if __name__ == "__main__":
+    print(pregunta_11())
     """
     Construya una tabla que contenga `c0` y una lista separada por ',' de
     los valores de la columna `c4` del archivo `tbl1.tsv`.

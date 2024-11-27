@@ -6,7 +6,15 @@ librerias de pandas para resolver las preguntas.
 """
 
 
+import pandas as pd
+x = pd.read_csv("files/input/tbl0.tsv", sep="\t") 
 def pregunta_09():
+    x['year']=x['c3'].str.split('-').str[0]
+    return(x)
+if __name__ == "__main__":
+    print(pregunta_09())
+
+    ""
     """
     Agregue el año como una columna al dataframe que contiene el archivo
     `tbl0.tsv`.

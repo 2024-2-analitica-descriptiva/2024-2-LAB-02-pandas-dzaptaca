@@ -6,7 +6,16 @@ librerias de pandas para resolver las preguntas.
 """
 
 
+import pandas as pd
+x = pd.read_csv("files/input/tbl2.tsv", sep="\t") 
 def pregunta_12():
+    x['c5b'] = x['c5b'].astype(str)
+    x.sort_values(by='c5a', ascending=True, inplace=True)
+    x['c5']=x['c5a']+":"+x['c5b']
+
+    return(x.groupby('c0')['c5'].agg(','.join).reset_index())
+if __name__ == "__main__":
+    print(pregunta_12())
     """
     Construya una tabla que contenga `c0` y una lista separada por ','
     de los valores de la columna `c5a`  y `c5b` (unidos por ':') de la
